@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+}
+
+/* ---------------------- Header ---------------------- */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  font-size: 15px;
+  padding: 8px;
+}
+
+header > img {
+  width: 35px;
+  margin-right: 10px;
+}
+
+/* ---------------------- Body ---------------------- */
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #1c1c1c;
+}
+
+main {
+  flex-grow: 1;
+  margin-top: 80px;
+}
+
+.container-square {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+}
+
+.square {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border: 2px solid #ffffff;
+}
+
+.square.X,
+.square.O {
+  cursor: not-allowed;
+}
+
+.square:nth-child(1),
+.square:nth-child(2),
+.square:nth-child(3) {
+  border-top: none;
+}
+
+.square:nth-child(3),
+.square:nth-child(6),
+.square:nth-child(9) {
+  border-right: none;
+}
+
+.square:nth-child(1),
+.square:nth-child(4),
+.square:nth-child(7) {
+  border-left: none;
+}
+
+.square:nth-child(7),
+.square:nth-child(8),
+.square:nth-child(9) {
+  border-bottom: none;
+}
+
+.square:hover {
+  cursor: pointer;
+}
+
+#button-position {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+#restart {
+  cursor: pointer;
+  height: 50px;
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+  background-color: #449e5afa;
+  color: #ffffff;
+
+  transition: 0.5s;
+}
+
+#restart:hover {
+  background-color: #58b870;
+}
+
+/* ---------------------- X ---------------------- */
+
+.square.X::before,
+.square.X::after {
+  background-color: #ffffff;
+}
+
+.container-square.X .square:not(.X):not(.O):hover::before,
+.container-square.X .square:not(.X):not(.O):hover::after {
+  background-color: #3d3d3d;
+}
+
+.container-square.X .square:not(.X):not(.O):hover::before,
+.container-square.X .square:not(.X):not(.O):hover::after,
+.square.X::before,
+.square.X::after {
+  content: "";
+  height: calc(100px * 0.1);
+  width: calc(100px * 0.9);
+  position: absolute;
+}
+
+.square.X {
+  cursor: not-allowed;
+}
+
+.container-square.X .square:not(.X):not(.O):hover::before,
+.square.X::before {
+  transform: rotate(45deg);
+}
+
+.container-square.X .square:not(.X):not(.O):hover::after,
+.square.X::after {
+  transform: rotate(-45deg);
+}
+
+/* ---------------------- O ---------------------- */
+
+.square.O::before,
+.square.O::after {
+  background-color: #ffffff;
+}
+
+.container-square.O .square:not(.X):not(.O):hover::before,
+.container-square.O .square:not(.X):not(.O):hover::after {
+  background-color: #3d3d3d;
+}
+
+.container-square.O .square:not(.X):not(.O)::before,
+.container-square.O .square:not(.X):not(.O)::after,
+.square.O::before,
+.square.O::after {
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+}
+
+.square.O {
+  cursor: not-allowed;
+}
+
+.container-square.O .square:not(.X):not(.O):hover::before,
+.square.O::before {
+  height: calc(100px * 0.9);
+  width: calc(100px * 0.9);
+}
+
+.container-square.O .square:not(.X):not(.O):hover::after,
+.square.O::after {
+  height: calc(100px * 0.7);
+  width: calc(100px * 0.7);
+  background-color: #1c1c1c;
+}
+
+/* ---------------------- Footer ---------------------- */
+
+footer {
+  text-align: center;
+  padding: 5px;
+}
